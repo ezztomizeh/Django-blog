@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content-section">
+    {% if user.first_name %}
+        <legend class="border-bottom mb-4">{{ user.first_name }}</legend>
+    {% else %}
+        <legend class="border-bottom mb-4">{{ user.username }}</legend>
+    {% endif %}
+    <center>
+        <h4> Account INFO </h4>
+        Account Create At : {{user.date_joined|date:'d/m/Y'}}
+        <br>
+        Last Login At : {{user.last_login|date:'d/m/Y'}}
+        <br>
+        Current Email : {{user.email}}
+        <br>
+        Current Username : {{user.username}}
+    </center>
+    <hr>
+    <center>
+        <h4> Account Setting </h4>
+        <br>
+        <a href="{% url 'ChangeUsername' %}" class ="btn btn-primary"> Change Your Username </a>
+        <br>
+        <br>
+        <a href="{% url 'ChangeName' %}" class ="btn btn-primary"> Change Your Name </a>
+        <br>
+        <br>
+        <a href="{% url 'ChangeEmail' %}" class ="btn btn-primary"> Change Your Email </a>
+        <br>
+        <br>
+        <a href="{% url 'ChangePassword' %}" class ="btn btn-primary"> Change Your Password </a>
+    </center>
+</div>
+{% endblock content %}
